@@ -1,0 +1,51 @@
+
+.fa-pen{
+    color: white;
+    padding: 10px;
+
+}
+.new-button{
+    background: rgb(22, 94, 183); ;
+    color: white;
+    border-radius: 20%;
+    padding: 10px;
+}
+
+.edit-button{
+    border-radius: 0px 0px 10px 10px;
+    background-color: green;
+    padding: 5px;
+}
+
+.fa-trash-can{
+    color: white;
+}
+
+.delete-button{
+    border-radius: 0px 0px 10px 10px;
+    background-color: rgb(128, 0, 0);
+    padding: 20px;
+}
+
+.personaForm{
+    width: 600px;
+}
+
+.about{
+    
+}
+
+.editPersona{
+    display: flex;
+    z-index: 1;
+    align-content: center;
+    padding-top: 120px;
+    background: rgba(0, 0, 0, 0.45) ;
+    background-blend-mode: lighten;
+    position:absolute;
+    background-size: cover;
+    right: -120px;
+    width: 100vw;
+
+    height: 700vh;
+}

@@ -1,0 +1,50 @@
+
+.fa-pen{
+    color: white;
+}
+
+.edit-button{
+    border-radius: 0px 0px 10px 10px;
+    background-color: green;
+    margin-top: 20px;
+    margin-left: 150px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+
+
+.fa-trash-can{
+    color: white;
+}
+.new-button{
+    background: rgb(22, 94, 183); ;
+    color: white;
+    border-radius: 20%;
+    padding: 10px;
+    width:55px;
+    height: 40px;
+    cursor:pointer;
+}
+
+.delete-button{
+    border-radius: 0px 0px 10px 10px;
+    background-color: rgb(128, 0, 0);
+    padding: 20px;
+    cursor:pointer;
+
+}
+
+.editSkills, .deleteSkills,.addSkills{
+    display: flex;
+    z-index: 1;
+    align-content: center;
+    padding-top: 170px;
+    right: -120px;
+    background: rgba(0, 0, 0, 0.45) ;
+    background-blend-mode: lighten;
+    position:absolute;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}

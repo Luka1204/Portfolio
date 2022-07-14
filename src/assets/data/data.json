@@ -1,0 +1,81 @@
+{
+    "name":"Luka Reyes",
+    "image":"/assets/img/profile.jpg",
+    "position":"Fullstack Developer JR",
+    "descripcion":" Me llamo Luka, soy estudiante del ultimo año del secundario con orientacion técnica en programación. Tengo conocimientos Básicos en: C# , C++ , SQL Server , Python. Tengo conocimientos de nivel intermedio en: MySql ,JS, HTML, CSS, PHP, Laravel.",
+    "fechaNac":"12 Abr. 2004",
+    "telefono":"+54 11-4975-9127",
+    "ciudad":"Buenos Aires,Argentina",
+    "edad":18,
+    "email":"lukareyes04@gmail.com",
+    "skills":{
+        "propuesta":"Soy bastante agil manejando el back-end tanto como el front-end creo que en ambas se como desarrollar y llevar a cabo un proyecto.Tambien tengo algunos conocimientos basicos en manejo de Photoshop, Illustrator, Sony Vegas, etc ",
+        "fronttech":{
+            "html":100,
+            "css":90,
+            "js":75,
+            "angular":75,
+            "dgrafico":45
+        },
+        "backtech":{
+            "php":90,
+            "nodejs":30,
+            "sql":85,
+            "c1":35,
+            "c2":45
+            
+
+        }
+    },
+    "resumen":{
+        "info":"Creo que puedo adaptarme a cualquier proyecto, resolver problemas que se presenten, y poder colaborar aportando ideas y trabajando solo o en equipo. Todo esto gracias a quevme fuí formando y preparando principalmnte en el colegio secundario y luego de manera autodidacta. Cabe destacar que actualmente no tengo experiencia profesional ya que todavia estoy en el ultimo año del secundario ",
+        "educacion":{
+            "institucion1":{
+                "titulo":"Tecnico Personal y Profesional en Programación",
+                "anoInicio":2017,
+                "anoFin":2022,
+                "nombreInstitucion":"E.E.S.T N°2 DE TEMPERLEY"
+            },
+            "institucion2":{
+                "titulo":"Argentina-Programa --- Full-Stack Web Developer JR",
+                "anoInicio":2021,
+                "anoFin":2022,
+                "nombreInstitucion":"INTI"
+            },
+            "institucion3":{
+                "titulo":"Master en PHP, SQL, POO, LARAVEL,WORDPRESSS Y SYMPHONY",
+                "anoInicio":2020,
+                "anoFin":2021,
+                "nombreInstitucion":"UDEMY"
+            }
+        },
+        "experiencia":{
+            "trabajo1":{
+                "puesto":"Developer",
+                "anoInicio":2020,
+                "anoFin":"Actualidad",
+                "ciudad":"Buenos Aires,Argentina",
+                "info":"Lead in the design, development, and implementation of the graphic, layout, and production communication materials"
+            }
+        }
+
+    },
+    "portfolio":{
+        "proyecto1":{
+            "nombreProyecto":"SnakeJS",
+            "imagenMuestra":"/assets/img/snake.png",
+            "enlace":"https://github.com/Luka1204/Snake"
+        },
+        "proyecto2":{
+            "nombreProyecto":"eCommerce PHP",
+            "imagenMuestra":"/assets/img/ECOMMERCE.jpeg",
+            "enlace":"https://github.com/Luka1204/e-Commerce"
+        },
+        "proyecto3":{
+            "nombreProyecto":"Blog PHP",
+            "imagenMuestra":"/assets/img/blog.jpeg",
+            "enlace":"https://github.com/Luka1204/Blog-VideojuegosPHP"
+        }
+    }
+
+}

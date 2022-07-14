@@ -1,0 +1,59 @@
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="ventana" *ngIf="modalSwitch == true">
+    <app-login></app-login>
+  </div>
+
+  <div class="d-flex flex-column">
+    <div class="profile">
+      <img
+        src="assets/img/profile.jpg"
+        alt=""
+        class="img-fluid bi-border-all"
+      />
+      <h1 class="text-light">
+        <a href="index.html"></a>{{ persona?.nombre }} {{ persona?.apellido }}
+      </h1>
+      <a *ngIf="loginService.sesionIniciada == false" (click)="openModal()" routerLink="/login" class="btn-login">Login</a>
+      <a (click)="loginService.sesionIniciada = false" (click)="recargarPagina()" *ngIf="loginService.sesionIniciada == true" class="btn-login"><p>Logout</p></a>
+
+      <div class="social-links mt-3 text-center">
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+
+    <nav id="navbar" class="nav-menu navbar">
+      <ul>
+        <li>
+          <a href="#" class="nav-link scrollto active"
+            ><i class="bx bx-home"></i> <span>Inicio</span></a
+          >
+        </li>
+        <li>
+          <a href="#skills" class="nav-link scrollto"
+            ><i class="bx bx-user"></i> <span>Skills</span></a
+          >
+        </li>
+        <li>
+          <a href="#resume" class="nav-link scrollto"
+            ><i class="bx bx-file-blank"></i> <span>Resumen</span></a
+          >
+        </li>
+        <li>
+          <a href="#portfolio" class="nav-link scrollto"
+            ><i class="bx bx-book-content"></i> <span>Portfolio</span></a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="nav-link scrollto"
+            ><i class="bx bx-envelope"></i> <span>Contacto</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- .nav-menu -->
+  </div>
+</header>
+<!-- End Header -->

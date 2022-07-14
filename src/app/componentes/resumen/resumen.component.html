@@ -1,0 +1,311 @@
+<!-- Modales Experiencia -->
+<div class="addExperiencia" id="addExperienciaModal" tabindex="1" role="dialog" aria-labelledby="addExperienciaModalLabel" aria-hidden="true" *ngIf="modalAddEx == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="addTecnologiaModal">Añadir Experiencia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalAddEx=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addFormEx="ngForm" (ngSubmit)="onAddExperiencia(addFormEx)" >
+
+          <div class="form-group">
+            <label for="nombreEmpresa">Nombre de la empresa</label>
+            <input type="text" ngModel name="nombreEmpresa" class="form-control" id="nombreEmpresa" placeholder="Nombre Empresa">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_inicio">Fecha Inicio</label>
+            <input type="text" ngModel name="fecha_inicio" class="form-control" id="fecha_inicio" placeholder="Porcentaje">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_final">Fecha Finalizacion</label>
+            <input type="text" ngModel name="fecha_final" class="form-control" id="fecha_final" placeholder="Porcentaje">
+          </div>
+
+           <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" ngModel name="ciudad" class="form-control" id="ciudad" placeholder="Ciudad">
+          </div>
+
+          <div class="form-group">
+            <label for="puesto">Puesto</label>
+            <input type="text" ngModel name="puesto" class="form-control" id="puesto" placeholder="Puesto">
+          </div>
+
+           <div class="form-group">
+            <label for="nombreTecnologia">Descripcion de lo realizado </label>
+            <textarea  ngModel name="info_desc" class="form-control" id="info_desc"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="add-tecnologia-form"  data-dismiss="modal">Cerrar</button>
+        <button [disabled]="addFormEx.invalid" type="submit"  class="btn btn-primary" (click)="onAddExperiencia(addFormEx)" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="editExperiencia" id="editExperienciaModal" tabindex="1" role="dialog" aria-labelledby="editExperienciaModalLabel" aria-hidden="true" *ngIf="modalEditEx == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="addTecnologiaModal">Editar Experiencia {{editExperiencias?.nombreEmpresa}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalEditEx=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editFormEx="ngForm" (ngSubmit)="onUpdateExperiencia(editFormEx.value)" >
+          <div class="form-group">
+            <input ngModel='{{editExperiencias?.id_experiencia}}' type="hidden" name="id_experiencia"class="form-control" id="id_experiencia" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <label for="nombreEmpresa">Nombre de la empresa</label>
+            <input type="text" ngModel="{{editExperiencias?.nombreEmpresa}}" name="nombreEmpresa" class="form-control" id="nombreEmpresa" placeholder="Nombre Empresa">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_inicio">Fecha Inicio</label>
+            <input type="text" ngModel="{{editExperiencias?.fecha_inicio}}" name="fecha_inicio" class="form-control" id="fecha_inicio" placeholder="Porcentaje">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_final">Fecha Finalizacion</label>
+            <input type="text" ngModel="{{editExperiencias?.fecha_final}}" name="fecha_final" class="form-control" id="fecha_final" placeholder="Porcentaje">
+          </div>
+
+           <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" ngModel="{{editExperiencias?.ciudad}}" name="ciudad" class="form-control" id="ciudad" placeholder="Ciudad">
+          </div>
+
+          <div class="form-group">
+            <label for="puesto">Puesto</label>
+            <input type="text" ngModel="{{editExperiencias?.puesto}}" name="puesto" class="form-control" id="puesto" placeholder="Puesto">
+          </div>
+
+           <div class="form-group">
+            <label for="nombreTecnologia">Descripcion de lo realizado </label>
+            <textarea  ngModel="{{editExperiencias?.info_desc}}" name="info_desc" class="form-control" id="info_desc"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="add-tecnologia-form"  data-dismiss="modal">Cerrar</button>
+        <button [disabled]="editFormEx.invalid" type="submit"  class="btn btn-primary" (click)="onUpdateExperiencia(editFormEx.value)" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deleteExperiencia"id="deleteExperienciaModal" tabindex="1" role="dialog" aria-labelledby="deleteExperienciaModalLabel" aria-hidden="true" *ngIf="modalDeleteEx == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="deleteExperienciaModal">Eliminar Experiencia {{deleteExperiencias?.nombreEmpresa}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalDeleteEx=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onDeleteExperiencia(deleteExperiencias!.id_experiencia)">
+          <p>¿Seguro que deseas eliminar esta experiecnia laboral del portfolio? {{deleteExperiencias?.nombreEmpresa}}</p>
+          <input ngModel='{{deleteExperiencias?.id_experiencia}}' type="hidden" name="id_experiencia" class="form-control" id="id_experiencia" >
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="delete-experiencia-form" (click)="modalDeleteEx=false"  data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary" (click)="onDeleteExperiencia(deleteExperiencias!.id_experiencia)" (click)="modalDeleteEx=false" >Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIN Modales Experiencia -->
+
+<!-- Modales Educacion -->
+<div class="addEducacion" id="addEducacionModal" tabindex="1" role="dialog" aria-labelledby="addEducacionModalLabel" aria-hidden="true" *ngIf="modalAddEd == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="addTecnologiaModal">Añadir Educacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalAddEd=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addFormEd="ngForm" (ngSubmit)="onAddEducacion(addFormEd)" >
+
+          <div class="form-group">
+            <label for="nombreEmpresa">Nombre de la institucion</label>
+            <input type="text" ngModel name="nombre_institucion" class="form-control" id="nombre_institucion" placeholder="Nombre Institucion">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_inicio">Fecha Inicio</label>
+            <input type="text" ngModel name="fecha_inicio" class="form-control" id="fecha_inicio" placeholder="Fecha Inicio">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_fin">Fecha Finalizacion</label>
+            <input type="text" ngModel name="fecha_fin" class="form-control" id="fecha_fin" placeholder="Fecha final">
+          </div>
+
+           <div class="form-group">
+            <label for="titulo">Titulo</label>
+            <input type="text" ngModel name="titulo" class="form-control" id="titulo" placeholder="Titulo">
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="add-educacion-form"  data-dismiss="modal">Cerrar</button>
+        <button [disabled]="addFormEd.invalid" type="submit"  class="btn btn-primary" (click)="onAddEducacion(addFormEd)" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="editEducacion" id="editEducacionModal" tabindex="1" role="dialog" aria-labelledby="editEducacionModalLabel" aria-hidden="true" *ngIf="modalEditEd == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="editEducacionModal">Editar Educacion {{editEducacion?.nombre_institucion}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalEditEd=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editFormEd="ngForm" (ngSubmit)="onUpdateEducacion(editFormEd.value)" >
+          <div class="form-group">
+            <input ngModel='{{editEducacion?.id_educacion}}' type="hidden" name="id_educacion"class="form-control" id="id_educacion" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <label for="nombreEmpresa">Nombre de la institucion</label>
+            <input type="text" ngModel="{{editEducacion?.nombre_institucion}}" name="nombre_institucion" class="form-control" id="nombre_institucion">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_inicio">Fecha Inicio</label>
+            <input type="text" ngModel="{{editEducacion?.fecha_inicio}}" name="fecha_inicio" class="form-control" id="fecha_inicio" >
+          </div>
+
+          <div class="form-group">
+            <label for="fecha_fin">Fecha Finalizacion</label>
+            <input type="text" ngModel="{{editEducacion?.fecha_fin}}" name="fecha_fin" class="form-control" id="fecha_fin" >
+          </div>
+
+           <div class="form-group">
+            <label for="ciudad">Titulo</label>
+            <input type="text" ngModel="{{editEducacion?.titulo}}" name="titulo" class="form-control" id="titulo" >
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="edit-educacion-form"  data-dismiss="modal">Cerrar</button>
+        <button [disabled]="editFormEd.invalid" type="submit"  class="btn btn-primary" (click)="onUpdateEducacion(editFormEd.value)" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deleteEducacion"id="deleteEducacionModal" tabindex="1" role="dialog" aria-labelledby="deleteEducacionModalLabel" aria-hidden="true" *ngIf="modalDeleteEd == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="deleteEducacionModal">Eliminar Educacion {{deleteEducacion?.nombre_institucion}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalDeleteEd=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onDeleteEducacion(deleteEducacion!.id_educacion)">
+          <p>¿Seguro que deseas eliminar esta educacion del portfolio? {{deleteEducacion?.nombre_institucion}}</p>
+          <input ngModel='{{deleteEducacion!.id_educacion}}' type="hidden" name="id_educacion" class="form-control" id="id_educacion" >
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="delete-educacion-form" (click)="modalDeleteEd=false"  data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary" (click)="onDeleteEducacion(deleteEducacion!.id_educacion)" (click)="modalDeleteEd=false" >Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIN Modales Experiencia -->
+
+
+<!-- ======= Resume Section ======= -->
+<section id="resume" class="resume">
+  <div class="container">
+    <div class="section-title">
+      <h2>Resumen</h2>
+      <p>{{persona?.propuestaProfesional}}</p>
+      <i class="fa-solid fa-pen"></i>
+    </div>
+
+    <div class="row">
+
+      <h3 class="resume-title">Educación</h3>
+
+      <div
+        class="col-lg-6"
+        data-aos="fade-up"
+        
+      >
+      <a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModalEd('add')"class="new-button">ADD</a>
+
+        <div class="resume-item" *ngFor="let educacion of educaciones">
+          <div class="buttons">
+            <a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModalEd('edit', educacion)" class="edit-button"><i class="fa-solid fa-pen"></i></a>
+            <a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModalEd('delete', educacion)"  class="delete-button"><i class="fa-solid fa-trash-can"></i></a>
+          </div>
+          <h4>{{ educacion.titulo }}</h4>
+          <h5>{{ educacion.fecha_inicio }} - {{ educacion.fecha_fin }}</h5>
+          <p>
+            <em>{{ educacion.nombre_institucion }}</em>
+          </p>
+        </div>
+
+      </div>
+     <h3 class="resume-title">Experiencia Profesional</h3>
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModalEx('add')"class="new-button">ADD</a>
+        <div class="resume-item" *ngFor="let experiencia of experiencias">
+          <a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModalEx('edit', experiencia)" class="edit-button"><i class="fa-solid fa-pen"></i></a
+          ><a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModalEx('delete', experiencia)" class="delete-button"
+            ><i class="fa-solid fa-trash-can"></i
+          ></a>
+          <h4>{{ experiencia.nombreEmpresa }}</h4>
+          <h5>
+            {{ experiencia.fecha_inicio }} - {{ experiencia.fecha_final }}
+          </h5>
+          <p>
+            <em
+              ><b>{{ experiencia.puesto }}</b></em
+            >
+          </p>
+          <ul>
+            <li>{{ experiencia.info_desc }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Resume Section -->

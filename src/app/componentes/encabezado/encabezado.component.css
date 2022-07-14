@@ -1,0 +1,28 @@
+.btn-login{
+    cursor: pointer;
+}
+
+.ventana{
+    background-color: rgba(0, 0, 0, 0.685);
+    position: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.edit-button{
+    background-color: green;
+    color: white;
+    border:none;
+    width: 7px;
+    height: 50px;
+}
+
+.fa-pen{
+    color: white;
+    background-color: green;
+    padding: 10px;
+    border-radius: 15px;
+    margin:3px;
+
+}

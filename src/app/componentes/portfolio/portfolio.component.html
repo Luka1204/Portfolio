@@ -1,0 +1,141 @@
+<div class="addProyecto" id="addProyectoModal" tabindex="1" role="dialog" aria-labelledby="addProyectoModalLabel" aria-hidden="true" *ngIf="addModal == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="addProyectoModal">Añadir Proyecto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="addModal=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addFormPr="ngForm" (ngSubmit)="onAddProyecto(addFormPr)" method="POST" >
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" ngModel name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="imagenURL">URL de la imagen</label>
+            <input type="text" ngModel name="imagenURL" class="form-control" id="imagenURL" placeholder="URL imagen">
+          </div>
+
+          <div class="form-group">
+            <label for="enalce">Enlace del repositorio del proyecto</label>
+            <input type="text" ngModel name="enlace" class="form-control" id="enlace" placeholder="Enlace Repo" >
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="add-proyecto-form"  data-dismiss="modal" (click)="addModal = false">Cerrar</button>
+        <button [disabled]="addFormPr.invalid" type="submit"  class="btn btn-primary" (click)="onAddProyecto(addFormPr)" (click)="addModal = false" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="editProyecto" id="editProyectoModal" tabindex="1" role="dialog" aria-labelledby="updateProyectoModalLabel" aria-hidden="true" *ngIf="editModal == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="updateTecnologiaModal">Editar Proyecto {{editProyecto?.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="editModal=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="onUpdateProyectos(editForm.value)">
+
+            <div class="form-group">
+            <input ngModel='{{editProyecto?.id_proyectos}}' type="hidden" name="id_proyectos"class="form-control" id="id_proyectos">
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input ngModel='{{editProyecto?.nombre}}' type="text" name="nombre" class="form-control" id="nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="imagenURL">URL Imagen</label>
+            <input ngModel='{{editProyecto?.imagenURL}}' type="text"  name="imagenURL" class="form-control" id="imagenURL" >
+          </div>
+
+          <div class="form-group">
+            <label for="enlace">Enlace</label>
+            <input ngModel='{{editProyecto?.enlace}}' type="text" name="enlace" class="form-control" id="enlace">
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="edit-proyecto-form" (click)="editModal=false"  data-dismiss="modal">Cerrar</button>
+        <a href="/"><button [disabled]="editForm.invalid" type="submit"  class="btn btn-primary" (click)="onUpdateProyectos(editForm.value)" (click)="editModal=false" >Guardar</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deleteProyecto" id="deleteProyectoModal" tabindex="1" role="dialog" aria-labelledby="deleteProyectoModalLabel" aria-hidden="true" *ngIf="deleteModal == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="deleteProyectoModal">Eliminar Proyecto {{deleteProyecto?.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="deleteModal=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onDeleteProyecto(deleteProyecto!.id_proyectos)">
+          <p>¿Seguro que deseas eliminar esta proyecto del portfolio? {{deleteProyecto?.nombre}}</p>
+          <input ngModel='{{deleteProyecto?.id_proyectos}}' type="hidden" name="id_proyectos" class="form-control" id="id_proyectos" >
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="delete-proyecto-form" (click)="deleteModal=false"  data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary" (click)="onDeleteProyecto(deleteProyecto!.id_proyectos)" (click)="deleteModal=false" >Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio section-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>Portfolio</h2>
+      <a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModal('add')" class="new-button">ADD</a>
+    </div>
+
+    <div
+      class="row portfolio-container"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <div
+        class="col-lg-4 col-md-6 portfolio-item filter-app"
+        *ngFor="let proyecto of proyectos"
+      >
+        <div class="portfolio-wrap">
+          <h3>{{ proyecto.nombre }}</h3>
+          <img src="{{ proyecto.imagenURL }}" class="img-fluid" alt="" />
+          <div class="portfolio-links">
+            <a href="{{ proyecto.enlace }}" title="More Details"
+              ><i class="bx bx-link"></i
+            ></a>
+          </div>
+        </div>
+        
+        <a *ngIf="loginService.sesionIniciada == true" class="edit-button" (click)="onOpenModal('edit',proyecto)"><i class="fa-solid fa-pen"></i></a
+          ><a *ngIf="loginService.sesionIniciada == true" (click)="onOpenModal('delete',proyecto)" class="delete-button"
+            ><i class="fa-solid fa-trash-can"></i
+          ></a>
+      
+      </div>
+   
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Section -->

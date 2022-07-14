@@ -1,0 +1,139 @@
+<div class="addSkills" id="addTecnologiaModal" tabindex="1" role="dialog" aria-labelledby="addTecnologiaModalLabel" aria-hidden="true" *ngIf="modalAdd == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="addTecnologiaModal">Añadir Tecnologia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalAdd=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddTecnologia(addForm)" >
+
+          <div class="form-group">
+            <label for="nombreTecnologia">Nombre</label>
+            <input type="text" ngModel name="nombre" class="form-control" id="nombreTecnologia" placeholder="Nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="porcentaje_dominado">Porcentaje Dominado</label>
+            <input type="number" ngModel name="porcentaje_dominado" class="form-control" id="porcentaje_dominado" placeholder="Porcentaje">
+          </div>
+
+          <div class="form-group">
+            <label for="tipo">Tipo Tecnologia</label>
+            <input type="text" ngModel name="tipo" class="form-control" id="tipo" placeholder="Tipo tecnologia" >
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="add-tecnologia-form"  data-dismiss="modal">Cerrar</button>
+        <button [disabled]="addForm.invalid" type="submit"  class="btn btn-primary" (click)="onAddTecnologia(addForm)" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="editSkills" id="editTecnologiaModal" tabindex="1" role="dialog" aria-labelledby="updateTecnologiaModalLabel" aria-hidden="true" *ngIf="modalEdit == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="updateTecnologiaModal">Editar Tecnologia {{editTecnologia?.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalEdit=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm" >
+
+            <div class="form-group">
+            <input ngModel='{{editTecnologia?.id_tecnologias}}' type="hidden" name="id_tecnologias"class="form-control" id="id_tecnologias" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <label for="nombreTecnologia">Nombre</label>
+            <input ngModel='{{editTecnologia?.nombre}}' type="text" name="nombre" class="form-control" id="nombreTecnologia" placeholder="Nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="porcentaje_dominado">Porcentaje Dominado</label>
+            <input ngModel='{{editTecnologia?.porcentaje_dominado}}' type="number"  name="porcentaje_dominado" class="form-control" id="porcentaje_dominado" placeholder="Porcentaje">
+          </div>
+
+          <div class="form-group">
+            <label for="tipo">Tipo Tecnologia</label>
+            <input ngModel='{{editTecnologia?.tipo}}' type="text" name="tipo" class="form-control" id="tipo" placeholder="Tipo tecnologia" >
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="add-tecnologia-form" (click)="modalEdit=false"  data-dismiss="modal">Cerrar</button>
+        <a href="/"><button [disabled]="editForm.invalid" type="submit"  class="btn btn-primary" (click)="onUpdateTecnologia(editForm.value)" (click)="modalEdit=false" >Guardar</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deleteSkills" id="deleteTecnologiaModal" tabindex="1" role="dialog" aria-labelledby="deleteTecnologiaModalLabel" aria-hidden="true" *ngIf="modalDelete == true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-tile" id="deleteTecnologiaModal">Eliminar Tecnología {{deleteTecnologia?.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close" (click)="modalDelete=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onDeleteTecnologia(deleteTecnologia!.id_tecnologias)">
+          <p>¿Seguro que deseas eliminar esta tecnología del portfolio? {{deleteTecnologia?.nombre}}</p>
+          <input ngModel='{{deleteTecnologia?.id_tecnologias}}' type="hidden" name="id_tecnologias" class="form-control" id="id_tecnologias" >
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" id="delete-tecnologia-form" (click)="modalDelete=false"  data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary" (click)="onDeleteTecnologia(deleteTecnologia!.id_tecnologias)" (click)="modalDelete=false" >Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills section-bg">
+        <div class="container">
+  
+          <div class="section-title">
+     
+           
+  
+            <h2>Skills</h2>
+
+            <a><i class="fa-solid fa-pen"></i></a>
+            <p>{{persona?.propuestaSkills}}</p>
+          </div>
+          <button *ngIf="loginService.sesionIniciada == true" type="button" (click)="onOpenModal('add')" class="new-button" data-target="#addTecnologiaModal">ADD</button> 
+
+          <div class="row skills-content">
+            
+            <div class="col-lg-6" data-aos="fade-up" *ngFor="let tecnologia of tecnologias">
+              <div class="progress">  
+                <a *ngIf="loginService.sesionIniciada == true" class="edit-button" (click)="onOpenModal('edit', tecnologia)" ><i class="fa-solid fa-pen"></i></a> 
+                <a *ngIf="loginService.sesionIniciada == true"  class="delete-button" (click)="onOpenModal('delete', tecnologia)"><i class="fa-solid fa-trash-can"></i></a>
+              <span class="skill">{{tecnologia.nombre}} <i class="val">{{tecnologia.porcentaje_dominado}}%</i></span> 
+                <div class="progress-bar-wrap">
+                  <progress  class="progress-bar"  value="{{tecnologia.porcentaje_dominado}}" max="100"></progress>
+                </div>
+              </div>              
+              </div>
+  
+           
+
+          </div>
+         
+        </div>
+     
+      </section><!-- End Skills Section -->
+      
