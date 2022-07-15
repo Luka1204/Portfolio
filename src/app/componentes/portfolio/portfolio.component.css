@@ -28,8 +28,11 @@
 }
 
 #portfolio{
-    height: 1300px;
+    height: 700px;
 }
+.portfolio-container {
+    height: 1300px;
+  }
 
 .editProyecto, .deleteProyecto,.addProyecto{
     display: flex;
