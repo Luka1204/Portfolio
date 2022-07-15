@@ -10,7 +10,7 @@ import { Tecnologias } from '../models/tecnologias';
 })
 export class TecnologiasService {
 
-  private apiServerUrl = environment.apiBaseURL;            /*Declaramos una variable donde guardaremos la url del servidor que usaremos para la API e instanciamos el ambiente donde se almacena la url base de la API*/
+  private apiServerUrl = 'https://portfolio-luka.herokuapp.com/api';            /*Declaramos una variable donde guardaremos la url del servidor que usaremos para la API e instanciamos el ambiente donde se almacena la url base de la API*/
   constructor( private http:HttpClient) { }
 
   public getTecnologias():Observable<Tecnologias[]>{        /*Metodo que nos va a traer a todas las tecnologias a travez de una peticion GET*/

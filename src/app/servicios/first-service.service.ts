@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class FirstServiceService {
   constructor(private http:HttpClient, private router: Router) { }
   
-  url="http://localhost:8080/api/";
+  url="https://portfolio-luka.herokuapp.com/api";
   obtenerDatos():Observable<any>{
-    return this.http.get<any>(this.url + "persona/1");
+    return this.http.get<any>(this.url + "/persona/1");
   }
 
   goToPage(pageName:string):void{

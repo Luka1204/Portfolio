@@ -6,7 +6,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  url="http://localhost:8080/api/login";
+  url='https://portfolio-luka.herokuapp.com/api/login';
   currentUserSubject: BehaviorSubject<any>;
   sesionIniciada : boolean = false;
 

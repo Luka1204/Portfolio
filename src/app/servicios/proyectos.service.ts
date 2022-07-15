@@ -8,7 +8,7 @@ import { Proyectos } from '../models/proyectos';
   providedIn: 'root'
 })
 export class ProyectosService {
-  private apiServerUrl = environment.apiBaseURL; /*Declaramos una variable donde guardaremos la url del servidor que usaremos para la API e instanciamos el ambiente donde se almacena la url base de la API*/
+  private apiServerUrl = 'https://portfolio-luka.herokuapp.com/api'; /*Declaramos una variable donde guardaremos la url del servidor que usaremos para la API e instanciamos el ambiente donde se almacena la url base de la API*/
   constructor( private http:HttpClient) { }
 
   public getProyectos():Observable<Proyectos[]>{        /*Metodo que nos va a traer a todos los proyectos a travez de una peticion GET*/
