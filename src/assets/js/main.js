@@ -91,8 +91,10 @@
   /**
    * Mobile nav toggle
    */
+  var Navbar = document.getElementById('header');
   on('click', '.mobile-nav-toggle', function(e) {
     select('body').classList.toggle('mobile-nav-active')
+    Navbar.style.left = 0;
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
   })
