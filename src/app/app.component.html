@@ -1,5 +1,6 @@
 
-   <app-encabezado></app-encabezado>
+    <i (click)="openMenu()" class="bi bi-list mobile-nav-toggle d-xl-none nav-toggle"></i>
+   <app-encabezado *ngIf="menuSwitch == true"></app-encabezado>
   <main id="main">
 
   <app-acerca-mi></app-acerca-mi>

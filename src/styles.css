@@ -110,7 +110,7 @@ body {
   
   @media (max-width: 1199px) {
     #header {
-      left: -300px;
+      left: 0px;
     }
   
     #main {
@@ -201,12 +201,7 @@ body {
     cursor: pointer;
   }
   
-  .mobile-nav-active {
-    overflow: hidden;
-  }
-  .mobile-nav-active #header {
-    left: 0;
-  }
+ 
   
   /*--------------------------------------------------------------
   # Hero Section
@@ -432,6 +427,12 @@ body {
     border-left: 2px solid #1f5297;
     position: relative;
   }
+  .resume .resume-item-red {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #971f43;
+    position: relative;
+  }
   .resume .resume-item h4 {
     line-height: 18px;
     font-size: 18px;
@@ -468,6 +469,18 @@ body {
     top: 0;
     background: #fff;
     border: 2px solid #1f5297;
+  }
+
+   .resume .resume-item-red::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: #fff;
+    border: 2px solid #971f43;
   }
   
   /*--------------------------------------------------------------

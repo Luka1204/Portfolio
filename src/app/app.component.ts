@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { SwitchServiceService } from './servicios/switch-service.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +12,8 @@ import { SwitchServiceService } from './servicios/switch-service.service';
 })
 export class AppComponent {
   modalSwitch:boolean = false;
+  menuSwitch : boolean = true;
+  menu:any
 
   title = 'Portfolio';
     miPorfolio:any;
@@ -28,6 +31,14 @@ export class AppComponent {
     });
 
     
+  }
+
+  openMenu():void{
+    if(this.menuSwitch == false){
+      this.menuSwitch = true;
+    }else if(this.menuSwitch == true ){
+      this.menuSwitch = false;
+    }
   }
 
   openModal():void{

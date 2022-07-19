@@ -1,10 +1,10 @@
 <!-- ======= Header ======= -->
-<header id="header">
+<header id="header" class="nav-menu">
   <div class="ventana" *ngIf="modalSwitch == true">
     <app-login></app-login>
   </div>
 
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column" id="menu" >
     <div class="profile">
       <img
         src="assets/img/profile.jpg"
@@ -12,7 +12,8 @@
         class="img-fluid bi-border-all"
       />
       <h1 class="text-light">
-        <a href="index.html"></a>{{ persona?.nombre }} {{ persona?.apellido }}
+        <a>{{ persona?.nombre }}</a>
+        <a>{{ persona?.apellido }}</a>
       </h1>
       <a *ngIf="loginService.sesionIniciada == false" (click)="openModal()" routerLink="/login" class="btn-login">Login</a>
       <a (click)="loginService.sesionIniciada = false" (click)="recargarPagina()" *ngIf="loginService.sesionIniciada == true" class="btn-login"><p>Logout</p></a>

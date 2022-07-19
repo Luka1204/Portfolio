@@ -91,17 +91,13 @@
   /**
    * Mobile nav toggle
    */
-  var Navbar = document.getElementById('header');
-  addEventListener('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    Navbar.style.left = 0;
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+
+
+ 
 
   /**
    * Scrool with ofset on links with a class name .scrollto
-   */
+   *
   on('click', '.scrollto', function(e) {
     if (select(this.hash)) {
       e.preventDefault()
@@ -193,11 +189,11 @@
 
   /**
    * Initiate portfolio lightbox 
-   */
+   
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
   });
-
+*/
   /**
    * Portfolio details slider
    */
